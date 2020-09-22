@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5XBe/FA8iPGpt82ecqpbM0Y1ZtjWfgEbaxmhVgduh9Vx0ME2D377yKnwbv6IrRo25uV5MtuhCdZcX4htEUclbA==",
+  "dgSpecHash": "spugRRammxVRFgS9OFonPHcVcYYVymaXLvzOTlJLzJpX/S/9PT7AE30VLEEFPUKk95PnFXiGBWnZt+SFM+t0eA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nypc\\Documents\\opg1Web\\Losning-pizza-1-core\\Oppgave1Web.csproj",
+  "projectFilePath": "C:\\Users\\nypc\\Documents\\Oppgave1Web\\opg1Web\\Oppgave1Web\\Oppgave1Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nypc\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\nypc\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

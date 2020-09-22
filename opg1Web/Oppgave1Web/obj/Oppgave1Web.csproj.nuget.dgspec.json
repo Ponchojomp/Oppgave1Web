@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nypc\\Documents\\opg1Web\\Losning-pizza-1-core\\Oppgave1Web.csproj": {}
+    "C:\\Users\\nypc\\Documents\\Oppgave1Web\\opg1Web\\Oppgave1Web\\Oppgave1Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nypc\\Documents\\opg1Web\\Losning-pizza-1-core\\Oppgave1Web.csproj": {
+    "C:\\Users\\nypc\\Documents\\Oppgave1Web\\opg1Web\\Oppgave1Web\\Oppgave1Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nypc\\Documents\\opg1Web\\Losning-pizza-1-core\\Oppgave1Web.csproj",
+        "projectUniqueName": "C:\\Users\\nypc\\Documents\\Oppgave1Web\\opg1Web\\Oppgave1Web\\Oppgave1Web.csproj",
         "projectName": "Oppgave1Web",
-        "projectPath": "C:\\Users\\nypc\\Documents\\opg1Web\\Losning-pizza-1-core\\Oppgave1Web.csproj",
+        "projectPath": "C:\\Users\\nypc\\Documents\\Oppgave1Web\\opg1Web\\Oppgave1Web\\Oppgave1Web.csproj",
         "packagesPath": "C:\\Users\\nypc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nypc\\Documents\\opg1Web\\Losning-pizza-1-core\\obj\\",
+        "outputPath": "C:\\Users\\nypc\\Documents\\Oppgave1Web\\opg1Web\\Oppgave1Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nypc\\AppData\\Roaming\\NuGet\\NuGet.Config",
