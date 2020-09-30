@@ -8,9 +8,9 @@ namespace KundeApp2.Model
     public class Rute
     {
         public int ID { get; set; }
-        public string Rutenavn { get; set; }
-        public int Rutetid { get; set; }
-        public string Startholdeplass{ get; set; }
-        public string Sluttholdeplass { get; set; }
+        public string rutenavn { get; set; }
+        public int varighet { get; set; }
+        public int startholdeplass{ get; set; }
+        public int sluttholdeplass { get; set; }
     }
 }

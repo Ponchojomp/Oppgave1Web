@@ -36,15 +36,15 @@ function hentAlleRuter() {
 function formaterRuter(ruter) {
     let ut = "<table class='table table-striped'>" +
         "<tr>" +
-        "<th>ID</th><th>Rutenavn</th><th>RuteID</th><th>Startholdeplass</th>" +
+        "<th>ID</th><th>Rutenavn</th><th>Varighet</th><th>Startholdeplass</th>" +
         "<th>Sluttholdeplass</th></tr>";
     for (let rute of ruter) {
         ut += "<tr>" +
             "<td>" + rute.id + "</td>" +
-            "<td>" + rute.Rutenavn + "</td>" +
-            "<td>" + rute.Rutetid+ "</td>" +
-            "<td>" + rute.Startholdeplass+ "</td>" +
-            "<td>" + rute.Sluttholdeplass+ "</td>" +
+            "<td>" + rute.rutenavn + "</td>" +
+            "<td>" + rute.varighet + "</td>" +
+            "<td>" + rute.startholdeplass + "</td>" +
+            "<td>" + rute.sluttholdeplass + "</td>" +
             "</tr>";
     }
     ut += "</table>";

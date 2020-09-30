@@ -28,7 +28,7 @@ namespace KundeApp2.Controllers
         }
         public List<Rute> HentAlleRuter()
         {
-            List<Rute> alleRutene= _kundeDB.Ruter.ToList();
+            List<Rute> alleRutene = _kundeDB.Ruter.ToList();
             return alleRutene;
         }
     }

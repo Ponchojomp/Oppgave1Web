@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LHkBZi95eU1v6OCfggIN2iMzpqULsGDhDvSY4xYzs7NDUvuUS8GQia18kSVtbPesWhggH4y+oWLsfd91escqrA==",
+  "dgSpecHash": "afQzr4OnLD4qCN3RoWxOv9PgGoZxWYoZW4nSzelvOjE0QSZlMqLjMyN6HHt4UjIgU/ddLUen+BV8knmnO1e9eg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nypc\\Downloads\\KundeApp2-DB1\\KundeApp2-DB1\\KundeApp2\\KundeApp2.csproj",
+  "projectFilePath": "C:\\Users\\nypc\\Documents\\Oppgave1Web\\KundeApp2-DB1\\KundeApp2-DB1\\KundeApp2\\KundeApp2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nypc\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\nypc\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

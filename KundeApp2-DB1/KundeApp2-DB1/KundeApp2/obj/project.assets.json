@@ -1045,11 +1045,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nypc\\Downloads\\KundeApp2-DB1\\KundeApp2-DB1\\KundeApp2\\KundeApp2.csproj",
+      "projectUniqueName": "C:\\Users\\nypc\\Documents\\Oppgave1Web\\KundeApp2-DB1\\KundeApp2-DB1\\KundeApp2\\KundeApp2.csproj",
       "projectName": "KundeApp2",
-      "projectPath": "C:\\Users\\nypc\\Downloads\\KundeApp2-DB1\\KundeApp2-DB1\\KundeApp2\\KundeApp2.csproj",
+      "projectPath": "C:\\Users\\nypc\\Documents\\Oppgave1Web\\KundeApp2-DB1\\KundeApp2-DB1\\KundeApp2\\KundeApp2.csproj",
       "packagesPath": "C:\\Users\\nypc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nypc\\Downloads\\KundeApp2-DB1\\KundeApp2-DB1\\KundeApp2\\obj\\",
+      "outputPath": "C:\\Users\\nypc\\Documents\\Oppgave1Web\\KundeApp2-DB1\\KundeApp2-DB1\\KundeApp2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nypc\\AppData\\Roaming\\NuGet\\NuGet.Config",
