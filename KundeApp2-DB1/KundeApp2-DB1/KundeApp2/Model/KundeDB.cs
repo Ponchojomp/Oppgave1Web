@@ -16,6 +16,8 @@ namespace KundeApp2.Model
         public DbSet<Kunde> Kunder { get; set; }
         public DbSet<Rute> Ruter { get; set; }
         public DbSet<Holdeplass> Holdeplass { get; set; }
-        
+        public DbSet<Avgang> Avganger { get; set; }
+        public DbSet<Bestilling> Bestillinger { get; set; }
+
     }
 }

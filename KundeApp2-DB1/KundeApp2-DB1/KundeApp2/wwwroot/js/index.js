@@ -4,6 +4,8 @@ $(function () {
     console.log("Hei");
     hentAlleRuter();
     hentAlleHoldeplasser();
+    hentAlleBestillinger();
+    hentAlleAvganger();
 });
 
 function hentAlleKunder() {
@@ -70,4 +72,49 @@ function formaterHoldeplasser(holdeplasser) {
     }
     ut += "</table>";
     $("#holdeplassene").html(ut);
+}
+
+function hentAlleBestillinger() {
+    $.get("kunde/hentAlleBestillinger", function (bestillinger) {
+        formaterBestillinger(bestillinger);
+    });
+}
+
+function formaterBestillinger(bestillinger) {
+    let ut = "<table class='table table-striped'>" +
+        "<tr>" +
+        "<th>ID</th><th>Navn</th><th>Telefonnummer</th><th>Avgang</th>" +
+        "</tr>";
+    for (let bestilling of bestillinger) {
+        ut += "<tr>" +
+            "<td>" + bestilling.id + "</td>" +
+            "<td>" + bestilling.navn + "</td>" +
+            "<td>" + bestilling.telefonnummer + "</td>" +
+            "<td>" + bestilling.avgang + "</td>" +
+            "</tr>";
+    }
+    ut += "</table>";
+    $("#bestillinger").html(ut);
+}
+function hentAlleAvganger() {
+    $.get("kunde/hentAlleAvganger", function (Avganger) {
+        formaterAvganger(Avganger);
+    });
+}
+
+function formaterAvganger(Avganger) {
+    let ut = "<table class='table table-striped'>" +
+        "<tr>" +
+        "<th>ID</th><th>Tid</th><th>Rute</th><th></th>" +
+        "</tr>";
+
+    for (let avgang of Avganger) {
+        ut += "<tr>" +
+            "<td>" + avgang.id + "</td>" +
+            "<td>" + avgang.tid + "</td>" +
+            "<td>" + avgang.rute+ "</td>" +
+            "</tr>";
+    }
+    ut += "</table>";
+    $("#avganger").html(ut);
 }
