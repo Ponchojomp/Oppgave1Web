@@ -36,10 +36,5 @@ namespace Oppgave1Web.Controllers
             List<Bestilling> alleBestillingene = _transportDB.Bestillinger.ToList();
             return alleBestillingene;
         }
-
-        public String hentReise(Reise reiseSearch)
-        {
-            return "helo";
-        }
     }
 }
