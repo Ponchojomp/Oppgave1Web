@@ -120,3 +120,5 @@ C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1
 C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Proxies.dll
 C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.csproj.CoreCompileInputs.cache
 C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\nypc\Documents\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\nypc\Documents\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Proxies.dll

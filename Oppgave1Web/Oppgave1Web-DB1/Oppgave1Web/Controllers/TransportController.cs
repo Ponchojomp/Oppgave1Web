@@ -18,6 +18,7 @@ namespace Oppgave1Web.Controllers
         {
             _transportDB = transportDB;
         }
+        //Hei
         
         public async Task<List<Holdeplass>> HentAlleHoldeplasser()
         {
@@ -68,6 +69,7 @@ namespace Oppgave1Web.Controllers
                 return false;
             }
         }
+
 
         public async Task<Avgang> hentReise(Reise reise)
         {
