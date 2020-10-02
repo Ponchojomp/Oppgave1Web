@@ -19,9 +19,9 @@ namespace Oppgave1Web.Controllers
             _transportDB = transportDB;
         }
         
-        public List<Holdeplass> HentAlleHoldeplasser()
+        public async Task<List<Holdeplass>> HentAlleHoldeplasser()
         {
-            List<Holdeplass> alleHoldeplassene = _transportDB.Holdeplass.ToList();
+            List<Holdeplass> alleHoldeplassene =  await _transportDB.Holdeplass.ToListAsync();
             return alleHoldeplassene;
         }
 
@@ -49,24 +49,30 @@ namespace Oppgave1Web.Controllers
                 return null; 
             }
         }
-        public List<Bestilling> HentAlleBestillinger()
+        public async  Task<List<Bestilling>> HentAlleBestillinger()
         {
-            List<Bestilling> alleBestillingene = _transportDB.Bestillinger.ToList();
+            List<Bestilling> alleBestillingene = await _transportDB.Bestillinger.ToListAsync();
             return alleBestillingene;
         }
 
-        public bool LagreBestilling(Bestilling bestilling)
+        public async Task<bool> LagreBestilling(Bestilling bestilling)
         {
             try
             {
                 _transportDB.Bestillinger.Add(bestilling);
-                _transportDB.SaveChanges();
+                await _transportDB.SaveChangesAsync();
                 return true;
             }
             catch
             {
                 return false;
             }
+        }
+
+        public async Task<Avgang> hentReise(Reise reise)
+        {
+            List<Avgang> avgangList = await HentAlleAvganger();
+            return reise.besteAvgang(avgangList);
         }
     }
 }
