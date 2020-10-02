@@ -6,9 +6,12 @@ var input = "";
 var avreiseSet = document.getElementById("avreiseSet");
 var ankomstSet = document.getElementById("ankomstSet");
 var datoTidSet = document.getElementById("datoTidSet");
+var startBy;
+var sluttBy;
+var reise;
+
 
 hentAlleHoldeplasser();
-
 selectDateAndTime();
 
 function hentAlleHoldeplasser() {
@@ -157,6 +160,38 @@ function closeAutocomplete() {
 
 }
 
+function getTid() {
+
+    var tid = document.getElementById("tidspunkt").value;
+    var tidInt = tid.split(":");
+    tidInt = tidInt[0];
+
+    console.log(tidInt * 60);
+    return (tidInt * 60);
+
+}
+
+function regnUtPris() {
+    var voksne = document.getElementById("voksenbilletter").value;
+    var barn = document.getElementById("barnebilletter").value;
+    document.getElementById("pris").innerHTML = ((50 + (reise.varighet)) * voksne) + ((50 + (reise.varighet)) * barn * 0.5) + ",-";
+}
+
+
+function tidFormat(tid) {
+    console.log("tidFormat: " + tid);
+    var time = new Date(tid * 60 * 1000);
+    var hour = time.getHours()-1;
+    if (hour < 10) {
+        hour = "0" + hour;
+    }
+    var min = time.getMinutes();
+    if (min < 10) {
+        min = "0" + min;
+    }
+    return hour + ":" + min
+}
+
 document.onkeydown = function (e) {
 
     switch (e.keyCode) {
@@ -236,11 +271,14 @@ function leggTilBy(by) {
                 byInput.placeholder = "Hvor vil du reise til?";
                 byInput.focus();
                 autocompleteOptions.scrollTo(0, 0);
+                startBy = byer[i][1];
             } else {
                 ankomstSet.style.display = "block";
                 ankomstSet.innerHTML = '<h3>Til:</h3>' + by + '<a href="#" onclick="resetAnkomstBy()">Endre</a>';
                 autocomplete.style.display = "none";
                 datoTidSet.style.display = "block";
+                sluttBy = byer[i][1]
+                finnReise(startBy, sluttBy, getTid());
             }
 
             break;
@@ -260,8 +298,34 @@ function resetAnkomstBy() {
     autocompleteOptions.scrollTo(0, 0);
 }
 
-function consoleLog() {
-    console.log("endre dato og tid");
+function tidEndret() {
+    finnReise(startBy, sluttBy, getTid());    
+}
+
+function finnReise(startHoldeplass, sluttHoldeplas, avgangstid) {
+    const Reise = {
+        start: startHoldeplass,
+        slutt: sluttHoldeplas,
+        tid: avgangstid,
+    }
+
+    $.get("transport/hentReise", Reise, function (reiserute) {
+        //console.log(reiserute.rutenavn + " " + tidFormat(reiserute.tid));
+        reise = reiserute;
+        var ut = "";
+        try {
+            ut = '<h3>Rute:</h3>' + reiserute.rutenavn + '<br><br><div class="third"><h3>Avgang:</h3>' + tidFormat(reiserute.tid) + '</div><div class="third"><h3>Reisetid:</h3>' + reiserute.varighet + ' min</div><div class="third"><h3>Annkomst:</h3>' + tidFormat(reiserute.tid + reiserute.varighet) + '</div>';
+            document.getElementById("bestill").style.display = "block";
+            regnUtPris();            
+        } catch {
+
+            ut = "<br><br><br><br><br><br>Fant ingen ruter som matchet søkekriteriene";
+            document.getElementById("bestill").style.display = "none";
+
+        }        
+        document.getElementById("ruteInfo").innerHTML = ut;
+
+    });
 }
 
 

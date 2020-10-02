@@ -8,7 +8,6 @@
     <style>
         * {
             box-sizing: border-box;
-            font-style:
         }
 
         body {
@@ -160,15 +159,15 @@
             cursor: pointer;
         }
 
-            .autocompleteItem:hover {
-                background-color: rgb(221, 221, 221);
-                outline: none !important;
-            }
+        .autocompleteItem:hover {
+            background-color: rgb(221, 221, 221);
+            outline: none !important;
+        }
 
-            .autocompleteItem:focus {
-                background-color: #dddddd;
-                outline: none !important;
-            }
+        .autocompleteItem:focus {
+            background-color: #dddddd;
+            outline: none !important;
+        }
 
         .autocompleteError {
             font-size: 20px;
@@ -190,6 +189,21 @@
             font-weight: bold;
             margin-bottom: 15px;
         }
+
+        #ruteInfo {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 70px;
+            text-align: center;
+        }
+        .third {
+            width: 33%;
+            float: left;
+        }
+
+        #bestill {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -207,11 +221,11 @@
         <div id="datoTidSet">
             <div id="datovalg">
                 Dato:
-                <input autocomplete="off" type="date" id="dato" name="birthday" onchange="consoleLog()" default:>
+                <input autocomplete="off" type="date" id="dato">
             </div>
             <div id="tidvalg">
                 Tid:
-                <select name="tidspunkt" id="tidspunkt" onchange="consoleLog()">
+                <select name="tidspunkt" id="tidspunkt" onchange="tidEndret()">
                     <option id="time6">06:00</option>
                     <option id="time7">07:00</option>
                     <option id="time8">08:00</option>
@@ -232,35 +246,40 @@
                     <option id="time23">23:00</option>
                 </select>
             </div>
-            Voksenbilletter:
-            <select name="voksenbilletter" id="voksenbilletter" onchange="consoleLog()">
-                <option>0</option>
-                <option selected="selected">1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-            </select>
-            Barnebilletter:
-            <select name="barnebilletter" id="barnebiletter" onchange="consoleLog()">
-                <option>0</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-            </select>
-            Pris:
-            <div id="pris">399,-</div>
-            <button>Bestill</button>
+            <div id="ruteInfo">
+                
+            </div>
+            <div id="bestill">
+                Voksenbilletter:
+                <select id="voksenbilletter" onchange="regnUtPris()">
+                    <option>0</option>
+                    <option selected="selected">1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                </select>
+                Barnebilletter:
+                <select id="barnebilletter" onchange="regnUtPris()">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                </select>
+                Pris:
+                <div id="pris">399,-</div>
+                <button onclick="bestill">Bestill</button>
+            </div>            
         </div>
         <div id="autocomplete">
             <input id="byInput" type="text" name="byInput" placeholder="Hvor vil du reise fra?" tabindex="0" onfocus="openAutocomplete()">

@@ -10,14 +10,14 @@ namespace Oppgave1Web.Model
         public int start { get; set; }
         public int slutt { get; set; }
         public int tid { get; set; }
-        public List<Avgang> muligeAvganger { get; set; }
+        public List<Avgang> muligeAvganger = new List<Avgang>();
 
 
         public Avgang besteAvgang(List<Avgang> avganger)
         {
             for (int i = 0; i < avganger.Count; i++)
             {
-                if (avganger[i].startholdeplass.Equals(this.start) && avganger[i].sluttholdeplass.Equals(this.slutt) && avganger[i].tid > this.tid)
+                if (avganger[i].startholdeplass.Equals(this.start) && avganger[i].sluttholdeplass.Equals(this.slutt) && avganger[i].tid >= this.tid)
                 {
                     muligeAvganger.Add(avganger[i]);
                 }
