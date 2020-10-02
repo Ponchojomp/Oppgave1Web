@@ -35,6 +35,34 @@
                 background: #555;
             }
 
+        #bestillingsboks {
+            height: 100vh;
+            width: 100%;
+            background-color: white;
+            z-index: 1000;
+            position: absolute;
+            text-align: center;
+            padding-top: 20vh;
+            font-size: 18px;
+            display: none
+        }
+
+        #bestillingsboks > input {
+            font-size: 20px;
+            padding: 6px;
+            width: 60%;
+            left: 20%;
+            margin-bottom: 10px;
+            
+        }
+
+        #bestillingsboks > button {
+            margin-top: 20px;
+            font-size: 20px;
+            padding: 6px 100px;
+            background-color: greenyellow;
+        }
+
         #ruteBox {
             width: 60%;
             position: absolute;
@@ -208,6 +236,16 @@
 </head>
 <body>
     <a href="../testside.html">Testside</a>
+    <div id="bestillingsboks">
+        <h1>Ordre</h1>
+        Navn:<br>
+        <input id="navnInput" type="text" placeholder="Ola Nordmann"></input>
+        <br>
+        Telefonnr:<br>
+        <input id="tlfInput" type="text" placeholder="12345678"></input>
+        <div id="billettyper"></div>
+        <button onclick="bestill()">Kjøp</button>
+    </div>
     <div id="ruteBox">
         <div id="avreiseSet">
             <h3>Fra:</h3>
@@ -278,7 +316,7 @@
                 </select>
                 Pris:
                 <div id="pris">399,-</div>
-                <button onclick="bestill">Bestill</button>
+                <button onclick="openBestill()">Bestill</button>
             </div>            
         </div>
         <div id="autocomplete">
@@ -297,4 +335,5 @@
     </div>
 </body>
 <script src="js/index.js"></script>
+<script src="js/JavaScript.js"></script>
 </html>

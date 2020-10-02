@@ -166,7 +166,6 @@ function getTid() {
     var tidInt = tid.split(":");
     tidInt = tidInt[0];
 
-    console.log(tidInt * 60);
     return (tidInt * 60);
 
 }
@@ -179,7 +178,6 @@ function regnUtPris() {
 
 
 function tidFormat(tid) {
-    console.log("tidFormat: " + tid);
     var time = new Date(tid * 60 * 1000);
     var hour = time.getHours()-1;
     if (hour < 10) {
@@ -310,7 +308,6 @@ function finnReise(startHoldeplass, sluttHoldeplas, avgangstid) {
     }
 
     $.get("transport/hentReise", Reise, function (reiserute) {
-        //console.log(reiserute.rutenavn + " " + tidFormat(reiserute.tid));
         reise = reiserute;
         var ut = "";
         try {
@@ -328,9 +325,54 @@ function finnReise(startHoldeplass, sluttHoldeplas, avgangstid) {
     });
 }
 
+function openBestill() {
+
+    document.getElementById("ruteBox").style.display = "none";
+    document.getElementById("bestillingsboks").style.display = "block";
+
+
+    var voksne = document.getElementById("voksenbilletter").value;
+    var barn = document.getElementById("barnebilletter").value;
+
+    var ut = "";
+    if (voksne > 0) {
+        ut += voksne + " voksenbillett(er)<br>";
+    }
+    if (barn > 0) {
+        ut += barn + " barnebillett(er)<br>";
+    }
+    var pris =
+        ut += "Pris: " + (((50 + (reise.varighet)) * voksne) + ((50 + (reise.varighet)) * barn * 0.5)) + ",-"
+
+
+    document.getElementById("billettyper").innerHTML = ut;
+
+}
+
+
 function bestill() {
 
-    //dette er en kommentar
+    var navnInput = document.getElementById("navnInput").value;
+    var tlfInput = document.getElementById("tlfInput").value;
+    var avgangId = reise.id;
+
+    const Bestilling = {
+        navn: navnInput,
+        telefonnummer: tlfInput,
+        Avgang: avgangId,
+    }
+
+
+    $.get("transport/LagreBestilling", Bestilling, function (bool) {
+        if (bool == true) {
+            console.log("dette funket");
+        } else {
+            console.log("dette funket ikke");
+        }
+
+    });
+
 }
+
 
 
