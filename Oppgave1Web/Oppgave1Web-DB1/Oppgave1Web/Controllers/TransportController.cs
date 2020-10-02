@@ -54,5 +54,19 @@ namespace Oppgave1Web.Controllers
             List<Bestilling> alleBestillingene = _transportDB.Bestillinger.ToList();
             return alleBestillingene;
         }
+
+        public bool LagreBestilling(Bestilling bestilling)
+        {
+            try
+            {
+                _transportDB.Bestillinger.Add(bestilling);
+                _transportDB.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

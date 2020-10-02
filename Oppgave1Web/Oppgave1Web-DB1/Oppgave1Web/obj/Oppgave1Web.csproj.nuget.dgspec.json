@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\krist\\Documents\\GitHub\\Oppgave1Web\\Oppgave1Web\\Oppgave1Web-DB1\\Oppgave1Web\\Oppgave1Web.csproj": {}
+    "C:\\Users\\nypc\\Documents\\Oppgave1Web\\Oppgave1Web\\Oppgave1Web-DB1\\Oppgave1Web\\Oppgave1Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\krist\\Documents\\GitHub\\Oppgave1Web\\Oppgave1Web\\Oppgave1Web-DB1\\Oppgave1Web\\Oppgave1Web.csproj": {
+    "C:\\Users\\nypc\\Documents\\Oppgave1Web\\Oppgave1Web\\Oppgave1Web-DB1\\Oppgave1Web\\Oppgave1Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\krist\\Documents\\GitHub\\Oppgave1Web\\Oppgave1Web\\Oppgave1Web-DB1\\Oppgave1Web\\Oppgave1Web.csproj",
+        "projectUniqueName": "C:\\Users\\nypc\\Documents\\Oppgave1Web\\Oppgave1Web\\Oppgave1Web-DB1\\Oppgave1Web\\Oppgave1Web.csproj",
         "projectName": "Oppgave1Web",
-        "projectPath": "C:\\Users\\krist\\Documents\\GitHub\\Oppgave1Web\\Oppgave1Web\\Oppgave1Web-DB1\\Oppgave1Web\\Oppgave1Web.csproj",
-        "packagesPath": "C:\\Users\\krist\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\krist\\Documents\\GitHub\\Oppgave1Web\\Oppgave1Web\\Oppgave1Web-DB1\\Oppgave1Web\\obj\\",
+        "projectPath": "C:\\Users\\nypc\\Documents\\Oppgave1Web\\Oppgave1Web\\Oppgave1Web-DB1\\Oppgave1Web\\Oppgave1Web.csproj",
+        "packagesPath": "C:\\Users\\nypc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nypc\\Documents\\Oppgave1Web\\Oppgave1Web\\Oppgave1Web-DB1\\Oppgave1Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\krist\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nypc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -87,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
