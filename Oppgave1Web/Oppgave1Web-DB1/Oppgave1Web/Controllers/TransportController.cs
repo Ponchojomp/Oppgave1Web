@@ -24,11 +24,7 @@ namespace Oppgave1Web.Controllers
             List<Holdeplass> alleHoldeplassene = _transportDB.Holdeplass.ToList();
             return alleHoldeplassene;
         }
-        public List<Rute> HentAlleRuter()
-        {
-            List<Rute> alleRutene = _transportDB.Ruter.ToList();
-            return alleRutene;
-        }
+
         public async Task<List<Avgang>> HentAlleAvganger()
         {
             try
@@ -38,11 +34,11 @@ namespace Oppgave1Web.Controllers
                 {
                     ID = k.ID,
                     tid = k.tid,
-                    ruteId = k.ruteID,
-                    rutenavn = k.AvgangRuter.rutenavn,
-                    varighet = k.AvgangRuter.varighet,
-                    startholdeplass = k.AvgangRuter.startholdeplass,
-                    sluttholdeplass = k.AvgangRuter.sluttholdeplass,
+                    ruteId = k.Rute.ID,
+                    rutenavn = k.Rute.rutenavn,
+                    varighet = k.Rute.varighet,
+                    startholdeplass = k.Rute.startholdeplass,
+                    sluttholdeplass = k.Rute.sluttholdeplass,
                 }).ToListAsync();
 
                 return alleAvgangene;

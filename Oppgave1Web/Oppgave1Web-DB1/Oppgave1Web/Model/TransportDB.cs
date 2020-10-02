@@ -13,16 +13,14 @@ namespace Oppgave1Web.Model
     {
         public string ID { get; set; }
         public string tid { get; set; }
-        public int ruteID { get; set; }
 
-        virtual public Ruter AvgangRuter { get; set; }
+        virtual public Ruter Rute { get; set; }
     }
 
     public class Ruter
     {
-        //[Key]
-        //[System.ComponentModel.DataAnnotations.Schema.DatabaseGenerated(DatabaseGeneratedOption.None)]
-
+        [Key]
+        [System.ComponentModel.DataAnnotations.Schema.DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
         public string rutenavn { get; set; }
         public int varighet { get; set; }
@@ -35,7 +33,6 @@ namespace Oppgave1Web.Model
         {
             Database.EnsureCreated();
         }
-        public DbSet<Rute> Ruter { get; set; }
         public DbSet<Holdeplass> Holdeplass { get; set; }
         public DbSet<Avganger> Avganger { get; set; }
         public DbSet<Bestilling> Bestillinger { get; set; }
