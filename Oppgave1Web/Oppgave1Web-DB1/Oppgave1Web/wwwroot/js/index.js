@@ -328,4 +328,9 @@ function finnReise(startHoldeplass, sluttHoldeplas, avgangstid) {
     });
 }
 
+function bestill() {
+
+    //dette er en kommentar
+}
+
 
