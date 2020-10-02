@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Oppgave1Web.Model
 {
-
+    //Hei
     public class Avganger
     {
         public string ID { get; set; }
