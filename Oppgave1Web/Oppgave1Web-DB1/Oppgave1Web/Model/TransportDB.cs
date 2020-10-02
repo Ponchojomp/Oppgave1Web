@@ -12,7 +12,7 @@ namespace Oppgave1Web.Model
     public class Avganger
     {
         public string ID { get; set; }
-        public string tid { get; set; }
+        public int tid { get; set; }
 
         virtual public Ruter Rute { get; set; }
     }

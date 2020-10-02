@@ -8,7 +8,7 @@ namespace Oppgave1Web.Model
     public class Avgang
     { 
         public string ID { get; set; }
-        public string tid  { get; set; }
+        public int tid  { get; set; }
         public int ruteId { get; set; }
         public string rutenavn { get; set; }
         public int varighet { get; set; }
