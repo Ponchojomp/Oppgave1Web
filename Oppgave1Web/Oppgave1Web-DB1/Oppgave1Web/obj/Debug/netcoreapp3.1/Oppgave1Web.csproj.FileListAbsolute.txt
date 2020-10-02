@@ -109,8 +109,6 @@ C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1
 C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.csprojAssemblyReference.cache
 C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.AssemblyInfoInputs.cache
 C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.AssemblyInfo.cs
-C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.csproj.CoreCompileInputs.cache
-C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.RazorTargetAssemblyInfo.cache
 C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.csproj.CopyComplete
 C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\staticwebassets\Oppgave1Web.StaticWebAssets.Manifest.cache
@@ -118,3 +116,7 @@ C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1
 C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.dll
 C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.pdb
 C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.genruntimeconfig.cache
+C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Proxies.dll
+C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.csproj.CoreCompileInputs.cache
+C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.MvcApplicationPartsAssemblyInfo.cache

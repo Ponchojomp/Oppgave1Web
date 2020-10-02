@@ -81,9 +81,11 @@ function hentAlleAvganger() {
 }
 
 function formaterAvganger(Avganger) {
+
+    console.log(Avganger);
     let ut = "<table class='table table-striped'>" +
         "<tr>" +
-        "<th>ID</th><th>Tid</th><th>Rute</th><th></th>" +
+        "<th>ID</th><th>Tid</th><th>Rute</th><th>Avgang</th>" +
         "</tr>";
 
     for (let avgang of Avganger) {
