@@ -1,10 +1,6 @@
 ﻿
 $(function () {
-    console.log("Hei");
-    hentAlleRuter();
-    hentAlleHoldeplasser();
     hentAlleBestillinger();
-    hentAlleAvganger();
 });
 
 function hentAlleRuter() {

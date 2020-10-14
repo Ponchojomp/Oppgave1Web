@@ -10,10 +10,15 @@
             box-sizing: border-box;
         }
 
-        body {
-            font: 16px Arial;
-            background-color: lightgrey;
-        }
+    body { font: 16px Arial;
+           background-image: url("https://www.opdalingen.no/sistenytt/article22527492.ece/ih4uuv/ALTERNATES/w980-default/Vy-buss-NSB-01734_JPG.JPG");
+           background-repeat: no-repeat;
+           background-position: center;
+           background-attachment: fixed;
+           background-size: cover;
+           
+
+    }
 
         /* width */
         ::-webkit-scrollbar {
@@ -45,6 +50,13 @@
             padding-top: 20vh;
             font-size: 18px;
             display: none
+        }
+        #logo{
+            position: absolute;
+            width: 20%;
+            height: auto;
+            top: 50px;
+            left: 2%;
         }
 
         #bestillingsboks > input {
@@ -235,6 +247,7 @@
     </style>
 </head>
 <body>
+    <img id="logo" src="https://www.nor-way.no/media/1171/nor-way_rgb_hovedlogo-01-4526.svg"/> 
     <a href="../testside.html">Testside</a>
     <div id="bestillingsboks">
         <h1>Ordre</h1>
@@ -244,13 +257,14 @@
         Telefonnr:<br>
         <input id="tlfInput" type="text" placeholder="12345678"></input>
         <div id="billettyper"></div>
-        <button onclick="bestill()">Kjøp</button>
+        <button id="leoknappen" onclick="bestill()">Kjøp</button>
+        <div id="utmelding"></div>
     </div>
     <div id="ruteBox">
         <div id="avreiseSet">
             <h3>Fra:</h3>
             Oslo S
-            <a src="\webtest.html">endre</a>
+            <a src="\index.html">endre</a>
         </div>
         <div id="ankomstSet">
             <h3>Fra:</h3>

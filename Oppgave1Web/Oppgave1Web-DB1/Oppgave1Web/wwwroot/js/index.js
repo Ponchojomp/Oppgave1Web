@@ -173,7 +173,9 @@ function getTid() {
 function regnUtPris() {
     var voksne = document.getElementById("voksenbilletter").value;
     var barn = document.getElementById("barnebilletter").value;
+    var pris = ((50 + (reise.varighet)) * voksne) + ((50 + (reise.varighet)) * barn * 0.5);
     document.getElementById("pris").innerHTML = ((50 + (reise.varighet)) * voksne) + ((50 + (reise.varighet)) * barn * 0.5) + ",-";
+
 }
 
 
@@ -263,7 +265,7 @@ function leggTilBy(by) {
         if (byer[i][0].toLowerCase() == by.toLowerCase()) {
             if (avreiseSet.style.display !== "block") {
                 avreiseSet.style.display = "block";
-                avreiseSet.innerHTML = '<h3>Fra:</h3>' + by + '<a href="\webtest.html">Endre</a>';
+                avreiseSet.innerHTML = '<h3>Fra:</h3>' + by + '<a href="\index.html">Endre</a>';
                 byInput.value = "";
                 generateAutocompleteItems();
                 byInput.placeholder = "Hvor vil du reise til?";
@@ -355,6 +357,8 @@ function bestill() {
     var navnInput = document.getElementById("navnInput").value;
     var tlfInput = document.getElementById("tlfInput").value;
     var avgangId = reise.id;
+    var kjøpGodkjent = true;
+
 
     const Bestilling = {
         navn: navnInput,
@@ -362,12 +366,14 @@ function bestill() {
         Avgang: avgangId,
     }
 
-
     $.get("transport/LagreBestilling", Bestilling, function (bool) {
         if (bool == true) {
             console.log("dette funket");
+            document.getElementById("utmelding").innerHTML = "Bestilling godkjent!";
         } else {
-            console.log("dette funket ikke");
+            console.log("Feil i bestilling");
+            document.getElementById("utmelding").innerHTML = "Bestilling feilet!";
+
         }
 
     });
