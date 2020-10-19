@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using KundeApp2.DAL;
 using KundeApp2.Model;
+using Microsoft.Extensions.Logging;
 
 namespace Oppgave1Web
 {
@@ -26,12 +27,13 @@ namespace Oppgave1Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerfactory)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                DBInit.Initialize(app);
+                loggerfactory.AddFile("Logs/Kundelog.txt");
+                //DBInit.Initialize(app);
             }
 
             app.UseRouting();

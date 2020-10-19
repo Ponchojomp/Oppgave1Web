@@ -173,8 +173,6 @@ C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1
 C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.csprojAssemblyReference.cache
 C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.AssemblyInfoInputs.cache
 C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.AssemblyInfo.cs
-C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.csproj.CoreCompileInputs.cache
-C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.RazorTargetAssemblyInfo.cache
 C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.csproj.CopyComplete
 C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\staticwebassets\Oppgave1Web.StaticWebAssets.Manifest.cache
@@ -182,3 +180,12 @@ C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1
 C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.dll
 C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.pdb
 C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.genruntimeconfig.cache
+C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.csproj.CoreCompileInputs.cache
+C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\obj\Debug\netcoreapp3.1\Oppgave1Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\bin\Debug\netcoreapp3.1\Serilog.dll
+C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\bin\Debug\netcoreapp3.1\Serilog.Extensions.Logging.dll
+C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\bin\Debug\netcoreapp3.1\Serilog.Extensions.Logging.File.dll
+C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\bin\Debug\netcoreapp3.1\Serilog.Formatting.Compact.dll
+C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\bin\Debug\netcoreapp3.1\Serilog.Sinks.Async.dll
+C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\bin\Debug\netcoreapp3.1\Serilog.Sinks.File.dll
+C:\Users\nypc\Documents\opg1Web\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web\bin\Debug\netcoreapp3.1\Serilog.Sinks.RollingFile.dll

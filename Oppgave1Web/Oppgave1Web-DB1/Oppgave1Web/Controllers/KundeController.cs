@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Castle.Core.Logging;
 using KundeApp2.DAL;
 using KundeApp2.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace KundeApp2.Controllers
 {
@@ -13,10 +15,12 @@ namespace KundeApp2.Controllers
     public class KundeController : ControllerBase
     {
         private readonly IKundeRepo _db;
+        private ILogger<KundeController> _log;
 
-        public KundeController(IKundeRepo db)
+        public KundeController(IKundeRepo db, ILogger<KundeController> log)
         {
             _db = db;
+            _log = log;
         }
 
         public async Task<bool> Lagre(Kunde innKunde)
@@ -26,6 +30,7 @@ namespace KundeApp2.Controllers
 
         public async Task<List<Kunde>> HentAlle()
         {
+            _log.LogInformation("Halla");
             return await _db.HentAlle();
         }
 
