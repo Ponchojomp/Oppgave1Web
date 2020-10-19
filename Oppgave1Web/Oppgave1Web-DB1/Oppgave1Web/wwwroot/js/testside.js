@@ -94,3 +94,31 @@ function formaterAvganger(Avganger) {
     ut += "</table>";
     $("#avganger").html(ut);
 }
+
+function hentAlleKunder() {
+    $.get("kudne/hentAlle", function (Kunder) {
+        formaterKunder(Kunder);
+    });
+}
+
+function formaterKunder(Kunder) {
+
+    console.log(Kunder);
+    let ut = "<table class='table table-striped'>" +
+        "<tr>" +
+        "<th>ID</th><th>navn</th><th>telefonnummer</th><th>postnr</th><th>poststed</th>" +
+        "</tr>";
+
+    for (let kunde of Kunder) {
+        ut += "<tr>" +
+            "<td>" + kunde.id + "</td>" +
+            "<td>" + kunde.navn + "</td>" +
+            "<td>" + kunde.telefonnummer + "</td>" +
+            "<td>" + kunde.postnr+ "</td>" +
+            "<td>" + kunde.poststed + "</td>" +
+            "</tr>";
+    }
+    ut += "</table>";
+    $("#kunder").html(ut);
+}
+
