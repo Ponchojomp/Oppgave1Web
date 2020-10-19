@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using KundeApp2.DAL;
+using KundeApp2.Model;
 
 namespace Oppgave1Web
 {
@@ -20,6 +22,7 @@ namespace Oppgave1Web
         {
             services.AddControllers();
             services.AddDbContext<TransportDB>(options => options.UseSqlite("Data source=transport.db"));
+            services.AddScoped<IKundeRepo, KundeRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -28,6 +31,7 @@ namespace Oppgave1Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                DBInit.Initialize(app);
             }
 
             app.UseRouting();
