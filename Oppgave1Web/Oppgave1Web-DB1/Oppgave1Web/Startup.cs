@@ -21,6 +21,7 @@ namespace Oppgave1Web
         {
             services.AddControllers();
             services.AddDbContext<TransportDB>(options => options.UseSqlite("Data source=transport.db"));
+            services.AddScoped<TransportDB, TransportDB>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -7,76 +7,59 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
+using Oppgave1Web.DAL;
+using ITransportRepo = Oppgave1Web.DAL.ITransportRepo;
 
 namespace Oppgave1Web.Controllers
 {
     [Route("[controller]/[action]")]
     public class TransportController : ControllerBase
     {
-        private readonly TransportDB _transportDB;
-        private ILogger<TransportController> _log;
+       
+        private readonly ITransportRepo _transportDB;
+        private readonly ILogger<TransportController> _log;
 
-        public TransportController(TransportDB transportDB, ILogger<TransportController> log)
+        public TransportController(ITransportRepo transportDB, ILogger<TransportController> log)
         {
             _transportDB = transportDB;
             _log = log;
         }
         
-        public async Task<List<Holdeplass>> HentAlleHoldeplasser()
+        public async Task<ActionResult<Holdeplass>> HentAlleHoldeplasser()
         {
             //Eksempel på log
             _log.LogInformation("Halla");
-            List<Holdeplass> alleHoldeplassene =  await _transportDB.Holdeplass.ToListAsync();
-            return alleHoldeplassene;
+
+            List<Holdeplass> alleHoldeplassene = await _transportDB.HentAlleHoldeplasser();
+            return Ok(alleHoldeplassene);
         }
 
-        public async Task<List<Avgang>> HentAlleAvganger()
+        public async Task<ActionResult<Avgang>> HentAlleAvganger()
         {
-            try
-            {
-                List<Avgang> alleAvgangene = await _transportDB.Avganger.Select(k => new Avgang
-
-                {
-                    ID = k.ID,
-                    tid = k.tid,
-                    ruteId = k.Rute.ID,
-                    rutenavn = k.Rute.rutenavn,
-                    varighet = k.Rute.varighet,
-                    startholdeplass = k.Rute.startholdeplass,
-                    sluttholdeplass = k.Rute.sluttholdeplass,
-                }).ToListAsync();
-
-                return alleAvgangene;
-            }
-            catch(Exception e)
-            {
-                Trace.WriteLine(e.Message);
-                return null; 
-            }
-        }
-        public async  Task<List<Bestilling>> HentAlleBestillinger()
-        {
-            List<Bestilling> alleBestillingene = await _transportDB.Bestillinger.ToListAsync();
-            return alleBestillingene;
+            List<Avgang> alleAvgangene = await _transportDB.HentAlleAvganger();
+            return Ok(alleAvgangene);
         }
 
-        public async Task<bool> LagreBestilling(Bestilling bestilling)
+        public async  Task<ActionResult<Bestilling>> HentAlleBestillinger()
         {
-            try
-            {
-                _transportDB.Bestillinger.Add(bestilling);
-                await _transportDB.SaveChangesAsync();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            List<Bestilling> alleBestillingene = await _transportDB.HentAlleBestillinger();
+            return Ok(alleBestillingene);
         }
 
-        public async Task<Avgang> hentReise(Reise reise)
+        public async Task<ActionResult> LagreBestilling(Bestilling bestilling)
         {
-            List<Avgang> avgangList = await HentAlleAvganger();
+            bool returOK = await _transportDB.LagreBestilling(bestilling);
+            if (!returOK)
+            {
+                _log.LogInformation("Bestilling ble ikke lagret");
+                return BadRequest("Bestilling ble ikke lagret");
+            }
+            return Ok("Bestilling lagret");
+        }
+
+        public async Task<Avgang> HentReise(Reise reise)
+        {
+            List<Avgang> avgangList = await _transportDB.HentAlleAvganger();
             return reise.besteAvgang(avgangList);
         }
     }
