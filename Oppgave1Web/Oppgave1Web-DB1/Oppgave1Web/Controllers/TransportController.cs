@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 
 namespace Oppgave1Web.Controllers
 {
@@ -13,14 +14,18 @@ namespace Oppgave1Web.Controllers
     public class TransportController : ControllerBase
     {
         private readonly TransportDB _transportDB;
+        private ILogger<TransportController> _log;
 
-        public TransportController(TransportDB transportDB)
+        public TransportController(TransportDB transportDB, ILogger<TransportController> log)
         {
             _transportDB = transportDB;
+            _log = log;
         }
         
         public async Task<List<Holdeplass>> HentAlleHoldeplasser()
         {
+            //Eksempel på log
+            _log.LogInformation("Halla");
             List<Holdeplass> alleHoldeplassene =  await _transportDB.Holdeplass.ToListAsync();
             return alleHoldeplassene;
         }
