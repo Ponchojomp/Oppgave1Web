@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Oppgave1Web.DAL
 {
@@ -15,17 +16,29 @@ namespace Oppgave1Web.DAL
     {
 
         private readonly TransportDB _transportDB;
+
+        private ILogger<TransportRepo> _log;
        
 
-        public TransportRepo(TransportDB transportDB) {
+        public TransportRepo(TransportDB transportDB, ILogger<TransportRepo> log) {
             _transportDB = transportDB;
+            _log = log;
         }
 
         public async Task<List<Holdeplass>> HentAlleHoldeplasser()
-        { 
+        {
 
-            List<Holdeplass> alleHoldeplassene = await _transportDB.Holdeplass.ToListAsync();
-            return alleHoldeplassene;
+            try
+            {
+                List<Holdeplass> alleHoldeplassene = await _transportDB.Holdeplass.ToListAsync();
+                return alleHoldeplassene;
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message);
+                return null;
+            }
+            
         }
 
         public async Task<List<Avgang>> HentAlleAvganger()
@@ -48,14 +61,44 @@ namespace Oppgave1Web.DAL
             }
             catch (Exception e)
             {
-                Trace.WriteLine(e.Message);
+                _log.LogInformation(e.Message);
                 return null;
             }
         }
+
         public async Task<List<Bestilling>> HentAlleBestillinger()
         {
-            List<Bestilling> alleBestillingene = await _transportDB.Bestillinger.ToListAsync();
-            return alleBestillingene;
+            try
+            {
+                List<Bestilling> alleBestillingene = await _transportDB.Bestillinger.ToListAsync();
+                return alleBestillingene;
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message);
+                return null;
+            }            
+        }
+       
+        public async Task<List<Rute>> HentAlleRuter()
+        {
+            throw new NotImplementedException();
+
+            //OBSOBSBOOSBO MÅ IMPLEMENTERES
+        }
+        
+        public async Task<Avgang> HentReise(Reise reise)
+        {
+            try
+            {
+                List<Avgang> avgangList = await HentAlleAvganger();
+                return reise.besteAvgang(avgangList);
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message);
+                return null;
+            }
         }
 
         public async Task<bool> LagreBestilling(Bestilling bestilling)
@@ -66,34 +109,49 @@ namespace Oppgave1Web.DAL
                 await _transportDB.SaveChangesAsync();
                 return true;
             }
-            catch
+            catch(Exception e)
             {
+                _log.LogInformation(e.Message);
                 return false;
             }
         }
 
-        public async Task<Avgang> HentReise(Reise reise)
-        {
-            List<Avgang> avgangList = await HentAlleAvganger();
-            return reise.besteAvgang(avgangList);
-        }
-
-        public async Task<bool> Slett(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<bool> LagreHoldeplass(Holdeplass innHoldeplass)
         {
-            throw new NotImplementedException();
-        }
-
-        public async Task<bool> EndreHoldeplass(Holdeplass innHoldeplass)
-        {
-            throw new NotImplementedException();
+            try
+            {
+                _transportDB.Holdeplass.Add(innHoldeplass);
+                await _transportDB.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message);
+                return false;
+            }
         }
 
         public async Task<bool> LagreAvgang(Avgang innAvgang)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<bool> LagreRute(Rute innRute)
+        {
+            try
+            {
+                _transportDB.Rute.Add(innRute);
+                await _transportDB.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> EndreHoldeplass(Holdeplass innHoldeplass)
         {
             throw new NotImplementedException();
         }
@@ -108,17 +166,27 @@ namespace Oppgave1Web.DAL
             throw new NotImplementedException();
         }
 
-        public async Task<List<Rute>> HentAlleRuter()
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<bool> LagreRute(Rute innRute)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<bool> EndreRute(Rute innRute)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> SlettHoldeplass(Holdeplass innHoldeplass)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> SlettAvgang(Avgang innAvgang)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> SlettBestilling(Bestilling innBestilling)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> SlettRute(Rute innRute)
         {
             throw new NotImplementedException();
         }

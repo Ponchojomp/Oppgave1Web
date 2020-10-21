@@ -36,7 +36,7 @@ namespace Oppgave1Web
 
             app.UseRouting();
 
-            app.UseStaticFiles(); // merk denne!
+            app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {

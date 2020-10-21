@@ -20,7 +20,7 @@ namespace Oppgave1Web.Model
     public class Ruter
     {
         [Key]
-        [System.ComponentModel.DataAnnotations.Schema.DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
         public string rutenavn { get; set; }
         public int varighet { get; set; }
@@ -34,6 +34,7 @@ namespace Oppgave1Web.Model
         {
             Database.EnsureCreated();
         }
+        public DbSet<Rute> Rute { get; set; }
         public DbSet<Holdeplass> Holdeplass { get; set; }
         public DbSet<Avganger> Avganger { get; set; }
         public DbSet<Bestilling> Bestillinger { get; set; }

@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Oppgave1Web.DAL;
-using ITransportRepo = Oppgave1Web.DAL.ITransportRepo;
 
 namespace Oppgave1Web.Controllers
 {
