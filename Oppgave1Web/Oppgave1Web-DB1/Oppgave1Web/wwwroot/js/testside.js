@@ -6,7 +6,11 @@ $(function () {
 function hentAlleRuter() {
     $.get("transport/hentAlleRuter", function (ruter) {
         formaterRuter(ruter);
-    });
+    })
+    .fail(function () {
+        console.log("feil");
+    })
+
 }
 
 function formaterRuter(ruter) {
@@ -30,7 +34,10 @@ function formaterRuter(ruter) {
 function hentAlleHoldeplasser() {
     $.get("transport/hentAlleHoldeplasser", function (holdeplasser) {
         formaterHoldeplasser(holdeplasser);
-    });
+    })
+    .fail(function () {
+        console.log("feil");
+    })
 }
 
 function formaterHoldeplasser(holdeplasser) {
@@ -50,8 +57,12 @@ function formaterHoldeplasser(holdeplasser) {
 
 function hentAlleBestillinger() {
     $.get("transport/hentAlleBestillinger", function (bestillinger) {
+        console.log(bestillinger);
         formaterBestillinger(bestillinger);
-    });
+    })
+    .fail(function () {
+        console.log("feil");
+    })
 }
 
 function formaterBestillinger(bestillinger) {
@@ -70,10 +81,15 @@ function formaterBestillinger(bestillinger) {
     ut += "</table>";
     $("#bestillinger").html(ut);
 }
+
+
 function hentAlleAvganger() {
     $.get("transport/hentAlleAvganger", function (Avganger) {
         formaterAvganger(Avganger);
-    });
+    })
+    .fail(function () {
+        console.log("feil");
+    })
 }
 
 function formaterAvganger(Avganger) {

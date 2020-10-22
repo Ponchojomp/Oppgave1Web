@@ -17,7 +17,10 @@ selectDateAndTime();
 function hentAlleHoldeplasser() {
     $.get("transport/hentAlleHoldeplasser", function (holdeplasser) {
         formaterHoldeplasser(holdeplasser);
-    });
+    })
+    .fail(function () {
+        console.log("feil");
+    })
 }
 
 function formaterHoldeplasser(holdeplasser) {
