@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using KundeApp2.Model;
+using Microsoft.AspNetCore.Mvc;
 using Oppgave1Web.Model;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,12 @@ namespace Oppgave1Web.DAL
     public interface ITransportRepo 
     {
 
-        
+        Task<bool> LoggInn(Bruker bruker);
+
         Task<List<Holdeplass>> HentAlleHoldeplasser();
         Task<bool> LagreHoldeplass(Holdeplass innHoldeplass);
         Task<bool> EndreHoldeplass(Holdeplass innHoldeplass);
-        Task<bool> SlettHoldeplass(Holdeplass innHoldeplass);
+        Task<bool> SlettHoldeplass(int id);
 
 
         Task<List<Avgang>> HentAlleAvganger();
