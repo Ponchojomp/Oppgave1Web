@@ -1,0 +1,834 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Ny Rute</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f5f5f5;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #BBB;
+        }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+
+        .ruteBox {
+            position: relative;
+            width: 60%;
+            left: 20%;
+        }
+
+        #ruteNavn {
+            position: relative;
+            top: 19.6px;
+            width: 50%;
+            outline: none !important;
+            border: 0px;
+            border-bottom: 1px solid grey;
+            font-size: 26px;
+            padding: 8px 12px;
+            color: grey;
+            cursor: pointer;
+            float: left;
+        }
+
+            #ruteNavn:focus {
+                color: black;
+                border-bottom: 1px solid black;
+            }
+
+            #ruteNavn:hover {
+                color: black;
+                border-bottom: 1px solid black;
+            }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 100;
+            margin: 15px 12px 10px 12px;
+        }
+
+
+        #dagRow {
+            min-width: 30%;
+            text-align: center;
+            float: right;
+            color: grey;
+        }
+
+        .dagValg {
+            display: inline-block;
+            font-size: 18px;
+            border-radius: 100%;
+            cursor: pointer;
+            width: 26.8px;
+            text-align: center;
+            margin: 1px;
+            padding: 3px;
+            color: grey;
+        }
+
+            .dagValg:hover {
+                background-color: #eeeeee;
+            }
+
+        #holdeplasser {
+            position: relative;
+            margin: 20px 0px 0px 0px;
+        }
+
+        ul {
+            padding: 0px;
+        }
+
+        .holdeplass {
+            list-style: none;
+            background-color: #eeeeee;
+            padding: 20px 40px;
+            margin: 15px 0px;
+            box-shadow: 0 3px 6px 0 #d6d6d6;
+            cursor: pointer;
+            will-change: transform;
+            list-style-type: none;
+            cursor: move;
+            transition: all 200ms;
+            user-select: none;
+            position: relative;
+        }
+
+            .holdeplass:hover {
+                background-color: #e5e5e5;
+                box-shadow: 0 3px 6px 0 #bebcbc;
+                cursor: pointer;
+            }
+
+            .holdeplass:after {
+                right: 7px;
+                position: absolute;
+                cursor: pointer;
+                transition: all 200ms;
+                transition-timing-function: cubic-bezier(0.48, 0.72, 0.62, 1.5);
+                transform: translateX(120%);
+                opacity: 0;
+            }
+
+            .holdeplass:hover:after {
+                opacity: 1;
+                transform: translate(0);
+            }
+
+        .over {
+            transform: scale(1.1, 1.1);
+            background-color: red;
+        }
+
+
+
+        svg {
+            height: 23px;
+            width: 24px;
+            text-align: center;
+            display: inline-block;
+            position: relative;
+            top: 4px;
+            margin-right: 40px;
+            cursor: pointer;
+        }
+
+        li > h3 {
+            display: inline-block;
+            font-size: 20px;
+            font-weight: 600;
+            width: calc(70% - 100px);
+        }
+
+        li > input {
+            display: inline-block;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid grey;
+            color: black;
+            font-size: 18px;
+            padding: 5px;
+            margin-top: 10px;
+            width: 57px;
+            outline: none !important;
+        }
+
+        li > span {
+            display: inline-block;
+            float: right;
+            font-size: 25px;
+            margin-top: 8px;
+            color: grey;
+        }
+
+            li > span:hover {
+                color: black;
+            }
+
+
+
+
+
+
+
+
+        #gjentakelseKnapp {
+            background-color: #FFF;
+            color: grey;
+            cursor: pointer;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+            padding: 25px 12px 25px 12px;
+        }
+
+            #gjentakelseKnapp:hover {
+                background-color: #fafafa;
+                color: black;
+            }
+
+        #openclose {
+            display: inline-block;
+            float: right;
+            font-size: 18px;
+            margin-top: -4px;
+            margin-right: 20px;
+            color: grey;
+        }
+
+            #openclose:hover {
+                color: black;
+            }
+
+
+        .gjentakelseBoks {
+            margin-bottom: 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #FFF;
+        }
+
+        #autocomplete {
+            padding: 10px;
+        }
+
+        #byInput {
+            font-size: 18px;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid grey;
+            cursor: pointer;
+        }
+
+            #byInput:focus {
+                border: 1px solid black;
+            }
+
+        #autocompleteOptions {
+            display: none;
+            position: absolute;
+            background-color: white;
+            width: calc(100% - 20px);
+            max-height: 140px;
+            overflow-y: scroll;
+            border: 1px solid grey;
+        }
+
+        .autocompleteItem {
+            font-size: 16px;
+            padding: 5px 10px;
+        }
+
+            .autocompleteItem:hover {
+                background-color: rgb(230, 230, 230);
+            }
+
+            .autocompleteItem:focus {
+                background-color: rgb(230, 230, 230);
+                outline: none !important;
+            }
+
+        select {
+            font-size: 16px;
+            padding: 8px;
+            width: 100%;
+        }
+
+        #oprettRute {
+            background-color: #00d51d;
+            color: white;
+            font-size: 24px;
+            padding: 12px 40px;
+            border: 0px;
+            outline: none !important;
+            margin: 30px 10px 50px 10px;
+            position: relative;
+            cursor: pointer;
+            float: right;
+        }
+
+            #oprettRute:Hover {
+                background-color: #00c11a;
+            }
+
+        #ruteVarighet {
+            padding: 10px;
+        }
+
+            #ruteVarighet > h3 {
+                margin: 15px 2px 10px 2px;
+            }
+
+        #varighetInput {
+            font-size: 18px;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid grey;
+            cursor: pointer;
+        }
+
+        #ruteAvganger {
+            padding: 10px;
+        }
+
+            #ruteAvganger > h3 {
+                margin: 15px 2px 10px 2px;
+            }
+
+        .avgang {
+            list-style: none;
+            background-color: #eeeeee;
+            padding: 10px 40px;
+            margin: 15px 0px;
+            box-shadow: 0 3px 6px 0 #d6d6d6;
+            cursor: pointer;
+            will-change: transform;
+            list-style-type: none;
+            transition: all 200ms;
+            user-select: none;
+            position: relative;
+        }
+
+        #nyAvgang {
+            background-color: #00d51d;
+            color: white;
+            font-size: 18px;
+            padding: 6px 20px;
+            border: 0px;
+            outline: none !important;
+            margin: 5px 5px 25px 5px;
+            position: relative;
+            cursor: pointer;
+            float: right;
+        }
+    </style>
+</head>
+<body drop-effect="copy">
+    <div class="ruteBox">
+        <div style="overflow: hidden">
+            <input id="ruteNavn" type="text" placeholder="Rutenavn"></input>
+            <div id="dagRow">
+                <h3>DAGER:</h3>
+                <div id="M" class="dagValg" onclick="dagValgt(this)">M</div>
+                <div id="T" class="dagValg" onclick="dagValgt(this)">T</div>
+                <div id="O" class="dagValg" onclick="dagValgt(this)">O</div>
+                <div id="T" class="dagValg" onclick="dagValgt(this)">T</div>
+                <div id="F" class="dagValg" onclick="dagValgt(this)">F</div>
+                <div id="L" class="dagValg" onclick="dagValgt(this)">L</div>
+                <div id="S" class="dagValg" onclick="dagValgt(this)">S</div>
+            </div>
+        </div>
+        <div id="holdeplasser">
+            <h3>HOLDEPLASSER:</h3>
+            <ul id="holdeplassListe">
+                Ingen holdeplasser
+            </ul>
+            <br>
+            <div id="holdeplassAdd">
+                <h3>LEGG TIL HOLDEPLASS:</h3>
+                <div id="autocomplete">
+                    <input id="byInput" type="text" name="byInput" placeholder="Ny holdeplass" tabindex="0" onfocus="openAutocomplete()">
+                    <div id="autocompleteOptions">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ruteVarighet">
+            <h3>VARIGHET:</h3>
+            <input id="varighetInput" type="text" name="ruteVarighet" placeholder="00:00" tabindex="0" onFocusOut="varighetFocus()"></input></input></input>
+        </div>
+        <div id="ruteAvganger">
+            <h3>AVGANGER</h3>
+            <ul id="avgangListe">
+            </ul>
+            <button id="nyAvgang" onClick="nyAvgang()">Ny avgang</button>
+        </div>
+        <button id="oprettRute">Oprett rute</button>
+    </div>
+</body>
+<script>
+
+  function dagValgt(dag){
+
+      if(dag.style.backgroundColor == "grey"){
+        dag.style.backgroundColor = "white";
+        dag.style.color = "grey";
+      } else {
+        dag.style.backgroundColor = "grey";
+        dag.style.color = "white";
+      }
+
+    }
+
+
+
+
+    //autocompleteBOX
+
+    var byer = ["Oslo S", "Trondheim", "Bergen", "Lillestrøm", "Ski", "Drammen", "Oslo Lufthavn", "Gol", "Hemsedal", "Trysil"];
+    var autocompleteOptions = document.getElementById("autocompleteOptions");
+    var autocomplete = document.getElementById("autocomplete");
+    var byInput = document.getElementById("byInput");
+    var input = "";
+
+    generateAutocompleteItems("");
+
+
+    function generateAutocompleteItems(){
+      setTimeout(function(){
+        var options = 0;
+        autocompleteOptions.innerHTML = "";
+        for(var i = 0; i<byer.length; i++){
+          if(byer[i].toLowerCase().startsWith(byInput.value.toLowerCase())){
+            autocompleteOptions.innerHTML = autocompleteOptions.innerHTML + '<div class="autocompleteItem" tabindex="0" onClick="byClicked(this)">' + byer[i] + '</div>';
+            input = byInput.value;
+            options++;
+          }
+        }
+
+            if(options == 0){
+          autocompleteOptions.innerHTML = '<div class="autocompleteError">Ingen stoppesteder funnet</div>';
+        } else if(options == 1 ){
+          var childs = autocompleteOptions.childNodes;
+          var child = childs[0];
+          if(child.innerHTML.toLowerCase() === byInput.value.toLowerCase()){
+            child.style.backgroundColor = "#dddddd";
+          }
+        }
+      }, 1);
+    }
+
+    document.addEventListener('focusin', function() {
+
+      if(document.activeElement.className === "autocompleteItem"){
+        byInput.value = document.activeElement.innerHTML;
+      }
+
+      if(document.activeElement.parentElement.parentElement !== autocomplete && document.activeElement.parentElement !== autocomplete){
+        closeAutocomplete();
+      }
+    }, true);
+
+    document.addEventListener("click", function(){
+      if(document.activeElement.parentElement.parentElement !== autocomplete && document.activeElement.parentElement !== autocomplete){
+        closeAutocomplete();
+      }
+    })
+
+
+    function openAutocomplete(){
+
+      autocompleteOptions.style.display = "block";
+
+    }
+
+    function closeAutocomplete(){
+
+      autocompleteOptions.style.display = "none";
+
+    }
+
+    document.onkeydown = function(e){
+
+      switch(e.keyCode){
+        case 13:
+          if(document.activeElement === byInput){
+            leggTilBy(byInput.value);
+          } else if(document.activeElement.className == "autocompleteItem"){
+            leggTilBy(document.activeElement.innerHTML);
+          }
+        case 9:
+          return;
+        break;
+        case 40:
+            e.preventDefault();
+            nextChild();
+            return;
+          break;
+        case 38:
+            prevChild();
+            e.preventDefault();
+            return;
+          break;
+        default:
+        break;
+      }
+
+      if(document.activeElement === byInput){
+        generateAutocompleteItems(byInput.value);
+      }
+
+    }
+
+    function nextChild(){
+      var childs = autocompleteOptions.children;
+      if(document.activeElement == byInput){
+        childs[0].focus();
+        return;
+      }
+      for(var i = 0; i < childs.length-1; i++){
+        if(document.activeElement == childs[i]){
+          childs[i+1].focus();
+          return;
+        }
+      }
+    };
+
+    function prevChild(){
+      var childs = autocompleteOptions.children;
+      for(var i = 0; i < childs.length; i++){
+        if(document.activeElement == childs[i]){
+          if(i==0){
+            byInput.focus();
+            byInput.value = input;
+          } else {
+            childs[i-1].focus();
+          }
+          return;
+        }
+      }
+    };
+
+    function byClicked(by){
+      leggTilBy(by.innerHTML);
+    }
+
+
+    function leggTilBy(by){
+
+        for(var i = 0; i < byer.length; i++){
+          if(byer[i].toLowerCase() == by.toLowerCase()){
+
+            holdeplasser.push([byer[i]]);
+            resetDragDrop();
+
+            byInput.value = "";
+            byInput.focus();
+            byInput.blur();
+            autocompleteOptions.style.display = "none";
+            resetDragDrop();
+
+            break;
+          }
+        }
+
+
+
+    }
+
+
+
+
+    function timeStringToInt(str){
+
+      if(str.length != 5){
+        console.log("1 ugylidig tidspunkt pass på å skrive på formen 00:00");
+        return -1;
+      }
+      str = str.split(":")
+      if(!Number.isInteger(str[0]*1)){
+        console.log("2 ugylidig tidspunkt pass på å skrive på formen 00:00");
+        return -1;
+      }
+      if(!Number.isInteger(str[1]*1)){
+        console.log("3 ugylidig tidspunkt pass på å skrive på formen 00:00");
+        return -1;
+      }
+      if(str[0].length != 2 || str[1].length != 2){
+        console.log("4 ugylidig tidspunkt pass på å skrive på formen 00:00");
+        return -1;
+      }
+
+      var time = (str[0]*60) + str[1]*1;
+      return time;
+
+    }
+
+
+    function timeIntToString(time){
+
+
+
+      var hr = Math.floor(time/60);
+      if(hr < 10){
+        hr = hr + "0";
+      }
+      var min = (time % 60);
+      if(min < 10){
+        min = min + "0";
+      }
+      return (hr + ":" + min)
+
+    }
+
+    var avgangListe =  [];
+    genererAvganger();
+
+    function genererAvganger(){
+      var ut = "";
+      for(var i = 0; i < avgangListe.length; i++){
+        ut += '<li value="' + i + '" class="avgang">Tid:<input class="tidspunkt" onFocus="this.setSelectionRange(0, this.value.length)" onFocusOut="avgangInput(this)" type="text" placeholder="00:00" value="' + timeIntToString(avgangListe[i]) + '"></input></h3><span class="close" onclick="fjernAvgang(' +  i + ')">x</span></li>';
+      }
+      document.getElementById("avgangListe").innerHTML = ut;
+
+    }
+
+    function nyAvgang(){
+      avgangListe.push("");
+      genererAvganger();
+    }
+
+    function fjernAvgang(i){
+      avgangListe.splice(i,1);
+      genererAvganger();
+    }
+
+    function avgangInput(e){
+      var timeFormatted = timeStringToInt(e.value);
+      if(timeFormatted == -1){
+        e.focus();
+        return;
+      }
+      avgangListe[e.parentElement.value] = timeFormatted;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Dragging
+
+    var holdeplasser = [];
+
+    startDragDrop();
+
+    function fjernLI(liElement){
+
+      if (liElement.parentNode.value > -1) {
+        holdeplasser.splice(liElement.parentNode.value, 1);
+      }
+      resetDragDrop();
+    }
+
+    function genererHoldeplasser(){
+      var ut = "";
+      for(var i = 0; i < holdeplasser.length; i++){
+        ut += '<li value="' + i + '" class="holdeplass" draggable="true"><svg data-baseweb="icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 8C4.44775 8 4 8.44775 4 9C4 9.55225 4.44775 10 5 10H19C19.5522 10 20 9.55225 20 9C20 8.44775 19.5522 8 19 8H5ZM5 14C4.44775 14 4 14.4478 4 15C4 15.5522 4.44775 16 5 16H19C19.5522 16 20 15.5522 20 15C20 14.4478 19.5522 14 19 14H5Z"></svg><h3>' + holdeplasser[i] + '</h3><span class="close" onclick="fjernLI(this)">x</span></li>';
+      }
+      document.getElementById("holdeplassListe").innerHTML = ut;
+
+    }
+
+    function timeKeyDown(e, ele){
+      if(e.keyCode == 13){
+        e.preventDefault();
+        ele.blur();
+      }
+    }
+
+    var btn = document.querySelector('.add');
+    var remove = document.querySelector('.holdeplass');
+    var dragging = null;
+    var position = null;
+
+    function dragStart(e) {
+      e.dataTransfer.effectAllowed = "copyMove";
+      dragging = this;
+      this.style.opacity = '0';
+    };
+
+    function dragEnter(e) {
+
+      position = this.value;
+      //event.dataTransfer.dropEffect = "copy";
+
+      if(this != dragging){
+        if(this.value > dragging.value){
+          if(this.style.top ==  "-103.2px"){
+            this.style.top = "0";
+          } else {
+            this.style.top = "-103.2px";
+          }
+        } else {
+          if(this.style.top ==  "103.2px"){
+            this.style.top = "0px";
+          } else {
+            this.style.top = "103px";
+          }
+        }
+
+      } else {
+        var alleHoldeplasser = document.getElementsByClassName("holdeplass");
+        for(var i = 0; i < alleHoldeplasser.length; i++){
+          alleHoldeplasser[i].style.top = "0px";
+        }
+      }
+
+    }
+
+    function dragLeave(e) {
+
+      e.preventDefault();
+    }
+
+    function dragOver(e) {
+      return false;
+
+    }
+
+    function dragDrop(e) {
+
+    }
+
+    function dragEnd(e) {
+      var arrayElement = holdeplasser[dragging.value];
+      if (dragging.value > -1) {
+        holdeplasser.splice(dragging.value, 1);
+      }
+      holdeplasser.splice(position,0,arrayElement);
+      resetDragDrop();
+
+    }
+
+    function addEventsDragAndDrop(object) {
+      object.addEventListener('dragstart', dragStart, false);
+      object.addEventListener('dragenter', dragEnter, false);
+      object.addEventListener('dragover', dragOver, false);
+      object.addEventListener('dragleave', dragLeave, false);
+      object.addEventListener('drop', dragDrop, false);
+      object.addEventListener('dragend', dragEnd, false);
+    }
+
+    function removeEventsDragAndDrop(object) {
+      object.removeEventListener('dragstart', dragStart, false);
+      object.removeEventListener('dragenter', dragEnter, false);
+      object.removeEventListener('dragover', dragOver, false);
+      object.removeEventListener('dragleave', dragLeave, false);
+      object.removeEventListener('drop', dragDrop, false);
+      object.removeEventListener('dragend', dragEnd, false);
+    }
+
+    function startDragDrop(){
+      genererHoldeplasser();
+        var listItens = document.querySelectorAll('.holdeplass');
+      [].forEach.call(listItens, function(item) {
+        addEventsDragAndDrop(item);
+      });
+    }
+
+    function resetDragDrop(){
+      if(holdeplasser.length > 1){
+        document.getElementById("holdeplassAdd").style.display = "none";
+      } else {
+        document.getElementById("holdeplassAdd").style.display = "block";
+      }
+      genererHoldeplasser();
+        var listItens = document.querySelectorAll('.holdeplass');
+      [].forEach.call(listItens, function(item) {
+        removeEventsDragAndDrop(item);
+        addEventsDragAndDrop(item);
+      });
+    }
+
+
+
+
+</script>
+
+</html>

@@ -1,7 +1,6 @@
 ﻿
 $(function () {
     hentAlleBestillinger();
-    hentAlleAvganger();
     hentAlleRuter();
     hentAlleHoldeplasser();
 });
@@ -17,6 +16,8 @@ function hentAlleRuter() {
 }
 
 function formaterRuter(ruter) {
+
+    console.log(ruter);
     let ut = "<table class='table table-striped'>" +
         "<tr>" +
         "<th>ID</th><th>Rutenavn</th><th>Varighet</th><th>Startholdeplass</th>" +
@@ -28,10 +29,16 @@ function formaterRuter(ruter) {
             "<td>" + rute.varighet + "</td>" +
             "<td>" + rute.startholdeplass + "</td>" +
             "<td>" + rute.sluttholdeplass + "</td>" +
+            "<td><button onClick='endreRute(" + rute.id + ")'>Endre</button></td>" + 
+            "<td><button class='btnSlett' onClick='slettRute(" + rute.id + ")'>Slett</button></td>" + 
             "</tr>";
     }
     ut += "</table>";
     $("#rutene").html(ut);
+}
+
+function slettRute(id) {
+
 }
 
 function hentAlleHoldeplasser() {
@@ -52,10 +59,16 @@ function formaterHoldeplasser(holdeplasser) {
         ut += "<tr>" +
             "<td>" + holdeplass.id + "</td>" +
             "<td>" + holdeplass.navn + "</td>" +
+            "<td><button onClick='endreHoldeplass(" + holdeplass.id + ")'>Endre</button></td>" +
+            "<td><button class='btnSlett' onClick='slettHoldeplass(" + holdeplass.id + ")'>Slett</button></td>" + 
             "</tr>";
     }
     ut += "</table>";
     $("#holdeplassene").html(ut);
+}
+
+function slettHoldeplass(id) {
+
 }
 
 function hentAlleBestillinger() {
@@ -79,37 +92,15 @@ function formaterBestillinger(bestillinger) {
             "<td>" + bestilling.navn + "</td>" +
             "<td>" + bestilling.telefonnummer + "</td>" +
             "<td>" + bestilling.avgang + "</td>" +
+            "<td><button class='btnSlett' onClick='slettBestilling(" + bestilling.id + ")'>Slett</button></td>" + 
             "</tr>";
     }
     ut += "</table>";
     $("#bestillinger").html(ut);
 }
 
+function slettBestilling() {
 
-function hentAlleAvganger() {
-    $.get("transport/hentAlleAvganger", function (Avganger) {
-        formaterAvganger(Avganger);
-    })
-    .fail(function () {
-        console.log("feil");
-    })
 }
 
-function formaterAvganger(Avganger) {
 
-    console.log(Avganger);
-    let ut = "<table class='table table-striped'>" +
-        "<tr>" +
-        "<th>ID</th><th>Tid</th><th>Rute</th><th>Avgang</th>" +
-        "</tr>";
-
-    for (let avgang of Avganger) {
-        ut += "<tr>" +
-            "<td>" + avgang.id + "</td>" +
-            "<td>" + avgang.tid + "</td>" +
-            "<td>" + avgang.rute + "</td>" +
-            "</tr>";
-    }
-    ut += "</table>";
-    $("#avganger").html(ut);
-}
