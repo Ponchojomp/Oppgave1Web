@@ -9,6 +9,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using System.Security.Cryptography;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace Oppgave1Web.DAL
 {
@@ -82,9 +84,16 @@ namespace Oppgave1Web.DAL
        
         public async Task<List<Rute>> HentAlleRuter()
         {
-            throw new NotImplementedException();
-
-            //OBSOBSBOOSBO MÅ IMPLEMENTERES
+            try
+            {
+                List<Rute> ruteList = await _transportDB.Rute.ToListAsync();
+                return ruteList;
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message);
+                return null;
+            }
         }
         
         public async Task<Avgang> HentReise(Reise reise)
@@ -151,6 +160,7 @@ namespace Oppgave1Web.DAL
             }
         }
 
+        //TODO: IMPLIMENTER ALLE DISSE"!!
         public async Task<bool> EndreHoldeplass(Holdeplass innHoldeplass)
         {
             throw new NotImplementedException();
@@ -189,6 +199,45 @@ namespace Oppgave1Web.DAL
         public Task<bool> SlettRute(Rute innRute)
         {
             throw new NotImplementedException();
+        }
+
+        public static byte[] LagHash(string passord, byte[] salt)
+        {
+            return KeyDerivation.Pbkdf2(
+                                password: passord,
+                                salt: salt,
+                                prf: KeyDerivationPrf.HMACSHA512,
+                                iterationCount: 1000,
+                                numBytesRequested: 32);
+        }
+
+        public static byte[] LagSalt()
+        {
+            var csp = new RNGCryptoServiceProvider();
+            var salt = new byte[24];
+            csp.GetBytes(salt);
+            return salt;
+        }
+
+        public async Task<bool> LoggInn(Bruker bruker)
+        {
+            try
+            {
+                Brukere funnetBruker = await _transportDB.Brukere.FirstOrDefaultAsync(b => b.Brukernavn == bruker.Brukernavn);
+                // sjekk passordet
+                byte[] hash = LagHash(bruker.Passord, funnetBruker.Salt);
+                bool ok = hash.SequenceEqual(funnetBruker.Passord);
+                if (ok)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message);
+                return false;
+            }
         }
     }
 }
