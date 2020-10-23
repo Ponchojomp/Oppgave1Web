@@ -11,7 +11,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Oppgave1Web.DAL;
-using KundeApp2.Model;
 
 namespace Oppgave1Web
 {
@@ -33,7 +32,7 @@ namespace Oppgave1Web
             {
                 app.UseDeveloperExceptionPage();
                 loggerfactory.AddFile("Logs/Transportlog.txt");
-                //DBInit.Initialize(app);
+                
             }
 
             app.UseRouting();

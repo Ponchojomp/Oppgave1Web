@@ -8,6 +8,7 @@
 2020-10-23T10:25:30.5928918+02:00 8000000c-0000-fd00-b63f-84710c7967bb [INF] Halla (cff296f1)
 2020-10-23T10:25:38.0989381+02:00 8000000a-0001-fe00-b63f-84710c7967bb [INF] Halla (cff296f1)
 2020-10-23T10:25:41.7928125+02:00 80000002-0000-fb00-b63f-84710c7967bb [INF] Halla (cff296f1)
+<<<<<<< HEAD
 2020-10-23T11:21:10.3919590+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
 2020-10-23T11:21:10.4290637+02:00  [INF] Hosting environment: "Development" (c3307c92)
 2020-10-23T11:21:10.4346333+02:00  [INF] Content root path: "C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web" (b5d60022)
@@ -295,3 +296,5 @@ Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such tab
 2020-10-23T12:13:27.8253895+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
 2020-10-23T12:13:27.8460787+02:00  [INF] Hosting environment: "Development" (c3307c92)
 2020-10-23T12:13:27.8483564+02:00  [INF] Content root path: "C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web" (b5d60022)
+=======
+>>>>>>> parent of b081464... litt ruter
