@@ -1,6 +1,9 @@
 ﻿
 $(function () {
     hentAlleBestillinger();
+    hentAlleAvganger();
+    hentAlleRuter();
+    hentAlleHoldeplasser();
 });
 
 function hentAlleRuter() {

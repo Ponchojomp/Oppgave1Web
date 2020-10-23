@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Oppgave1Web.DAL;
 
 namespace Oppgave1Web
 {
@@ -21,7 +22,7 @@ namespace Oppgave1Web
         {
             services.AddControllers();
             services.AddDbContext<TransportDB>(options => options.UseSqlite("Data source=transport.db"));
-            services.AddScoped<TransportDB, TransportDB>();
+            services.AddScoped<ITransportRepo, TransportRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
