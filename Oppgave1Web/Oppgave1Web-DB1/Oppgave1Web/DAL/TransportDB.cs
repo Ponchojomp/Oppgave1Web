@@ -42,6 +42,7 @@ namespace Oppgave1Web.Model
         {
             Database.EnsureCreated();
         }
+        //Endre til Ruter får hentalle til å funke
         public DbSet<Rute> Rute { get; set; }
         public DbSet<Holdeplass> Holdeplass { get; set; }
         public DbSet<Avganger> Avganger { get; set; }

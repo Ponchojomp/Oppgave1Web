@@ -184,9 +184,22 @@ namespace Oppgave1Web.DAL
             throw new NotImplementedException();
         }
 
-        public Task<bool> SlettHoldeplass(Holdeplass innHoldeplass)
+        public async Task<bool> SlettHoldeplass(int id)
         {
-            throw new NotImplementedException();
+            {
+                try
+                {
+                    Holdeplass enHoldeplass= await _transportDB.Holdeplass.FindAsync(id);
+                    _transportDB.Holdeplass.Remove(enHoldeplass);
+                    await _transportDB.SaveChangesAsync();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    _log.LogInformation(e.Message);
+                    return false;
+                }
+            }
         }
 
         public Task<bool> SlettAvgang(Avgang innAvgang)

@@ -16,7 +16,7 @@ namespace Oppgave1Web.DAL
         Task<List<Holdeplass>> HentAlleHoldeplasser();
         Task<bool> LagreHoldeplass(Holdeplass innHoldeplass);
         Task<bool> EndreHoldeplass(Holdeplass innHoldeplass);
-        Task<bool> SlettHoldeplass(Holdeplass innHoldeplass);
+        Task<bool> SlettHoldeplass(int id);
 
 
         Task<List<Avgang>> HentAlleAvganger();

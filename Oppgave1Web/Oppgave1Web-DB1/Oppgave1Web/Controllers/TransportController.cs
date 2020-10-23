@@ -42,6 +42,12 @@ namespace Oppgave1Web.Controllers
             return Ok(alleAvgangene);
         }
 
+        public async Task<ActionResult<Rute>> HentAlleRuter()
+        {
+            List<Rute> alleRutene = await _transportDB.HentAlleRuter();
+            return Ok(alleRutene);
+        }
+
         public async  Task<ActionResult<Bestilling>> HentAlleBestillinger()
         {
             List<Bestilling> alleBestillingene = await _transportDB.HentAlleBestillinger();
