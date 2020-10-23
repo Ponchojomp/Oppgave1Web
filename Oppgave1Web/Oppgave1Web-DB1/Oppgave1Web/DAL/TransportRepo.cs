@@ -57,7 +57,7 @@ namespace Oppgave1Web.DAL
                     rutenavn = k.Rute.rutenavn,
                     varighet = k.Rute.varighet,
                     startholdeplass = k.Rute.startholdeplass,
-                    sluttholdeplass = k.Rute.sluttholdeplass,
+                    sluttholdeplass = k.Rute.sluttholdeplass
                 }).ToListAsync();
 
                 return alleAvgangene;
@@ -88,15 +88,21 @@ namespace Oppgave1Web.DAL
 
             try
             {
-                List<Rute> ruteList = await _transportDB.Rute.ToListAsync();
-                return ruteList;
+                List<Rute> alleRuter = await _transportDB.Ruter.Select(k => new Rute
+                {
+                    ID = k.ID,
+                    rutenavn = k.rutenavn,
+                    varighet = k.varighet,
+                    startholdeplass = k.startholdeplass,
+                    sluttholdeplass = k.sluttholdeplass
+                }).ToListAsync();
+                return alleRuter;
             }
             catch (Exception e)
             {
                 _log.LogInformation(e.Message);
                 return null;
             }
-            throw new NotImplementedException();
 
         }
 
@@ -153,7 +159,7 @@ namespace Oppgave1Web.DAL
         {
             try
             {
-                _transportDB.Rute.Add(innRute);
+                _transportDB.Ruter.Add(innRute);
                 await _transportDB.SaveChangesAsync();
                 return true;
             }

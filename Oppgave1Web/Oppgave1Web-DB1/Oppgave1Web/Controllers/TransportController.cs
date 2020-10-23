@@ -71,6 +71,17 @@ namespace Oppgave1Web.Controllers
             return reise.besteAvgang(avgangList);
         }
 
+        public async Task<ActionResult> SlettHoldeplass(int id)
+        {
+            bool returOK = await _transportDB.SlettHoldeplass(id);
+            if (!returOK)
+            {
+                _log.LogInformation("Kunne ikke slette holdeplass");
+                return NotFound("Kunne ikke slette holdeplass");
+            }
+            return Ok("Holdeplass slettet");
+        }
+
         public async Task<ActionResult> LoggInn(Bruker bruker)
         {
             if (ModelState.IsValid)

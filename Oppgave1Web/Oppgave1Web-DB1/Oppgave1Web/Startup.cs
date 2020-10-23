@@ -23,6 +23,15 @@ namespace Oppgave1Web
             services.AddControllers();
             services.AddDbContext<TransportDB>(options => options.UseSqlite("Data source=transport.db"));
             services.AddScoped<ITransportRepo, TransportRepo>();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".AdventureWorks.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(1800); // 30 minutter
+                options.Cookie.IsEssential = true;
+            });
+            // Denne må også være med:
+            services.AddDistributedMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +47,8 @@ namespace Oppgave1Web
             app.UseRouting();
 
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
