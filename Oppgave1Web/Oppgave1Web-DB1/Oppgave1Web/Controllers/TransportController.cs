@@ -19,7 +19,7 @@ namespace Oppgave1Web.Controllers
        
         private readonly ITransportRepo _transportDB;
         private readonly ILogger<TransportController> _log;
-        private const string _loggetInn = "loggetInn";
+        private const string _loggetInn = "LoggetInn";
 
         public TransportController(ITransportRepo transportDB, ILogger<TransportController> log)
         {
@@ -29,8 +29,11 @@ namespace Oppgave1Web.Controllers
         
         public async Task<ActionResult<Holdeplass>> HentAlleHoldeplasser()
         {
+
             //Eksempel på log
             _log.LogInformation("Halla");
+
+           
 
             List<Holdeplass> alleHoldeplassene = await _transportDB.HentAlleHoldeplasser();
             return Ok(alleHoldeplassene);

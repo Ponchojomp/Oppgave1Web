@@ -38,7 +38,7 @@
                 brukernavn: $("#brukernavn").val(),
                 passord: $("#passord").val()
             }
-            $.post("Kunde/LoggInn", bruker, function (OK) {
+            $.post("Transport/LoggInn", bruker, function (OK) {
                 if (OK) {
                     window.location.href = 'testside.html';
                 }

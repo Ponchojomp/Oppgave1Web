@@ -1,17 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Oppgave1Web.Model;
-using Oppgave1Web.DAL;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Diagnostics;
+using KundeApp2.Model;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Security.Cryptography;
-using KundeApp2.Model;
 
 namespace Oppgave1Web.DAL
 {
@@ -32,7 +28,8 @@ namespace Oppgave1Web.DAL
         {
 
             try
-            {
+            { 
+
                 List<Holdeplass> alleHoldeplassene = await _transportDB.Holdeplass.ToListAsync();
                 return alleHoldeplassene;
             }
@@ -88,7 +85,7 @@ namespace Oppgave1Web.DAL
 
             try
             {
-                List<Rute> alleRuter = await _transportDB.Ruter.Select(k => new Rute
+                List<Rute> alleRuter = await _transportDB.Rute.Select(k => new Rute
                 {
                     ID = k.ID,
                     rutenavn = k.rutenavn,
@@ -159,7 +156,7 @@ namespace Oppgave1Web.DAL
         {
             try
             {
-                _transportDB.Ruter.Add(innRute);
+                _transportDB.Rute.Add(innRute);
                 await _transportDB.SaveChangesAsync();
                 return true;
             }

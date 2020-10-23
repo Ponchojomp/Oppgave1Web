@@ -41,7 +41,8 @@ namespace Oppgave1Web
             {
                 app.UseDeveloperExceptionPage();
                 loggerfactory.AddFile("Logs/Transportlog.txt");
-                
+               // DBInit.Initialize(app);
+
             }
 
             app.UseRouting();

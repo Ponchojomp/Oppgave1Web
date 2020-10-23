@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Oppgave1Web.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -41,9 +42,10 @@ namespace Oppgave1Web.Model
         public TransportDB (DbContextOptions<TransportDB> options) : base(options)
         {
             Database.EnsureCreated();
+
         }
         //Endre til Ruter får hentalle til å funke
-        public DbSet<Rute> Ruter { get; set; }
+        public DbSet<Rute> Rute { get; set; }
         public DbSet<Holdeplass> Holdeplass { get; set; }
         public DbSet<Avganger> Avganger { get; set; }
         public DbSet<Bestilling> Bestillinger { get; set; }
