@@ -7,6 +7,7 @@ $(function () {
 
 function hentAlleRuter() {
     $.get("transport/hentAlleRuter", function (ruter) {
+        console.log(ruter);
         formaterRuter(ruter);
     })
     .fail(function () {
@@ -73,7 +74,6 @@ function slettHoldeplass(id) {
 
 function hentAlleBestillinger() {
     $.get("transport/hentAlleBestillinger", function (bestillinger) {
-        console.log(bestillinger);
         formaterBestillinger(bestillinger);
     })
     .fail(function () {

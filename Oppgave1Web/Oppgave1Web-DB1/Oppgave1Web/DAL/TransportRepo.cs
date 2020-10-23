@@ -86,7 +86,7 @@ namespace Oppgave1Web.DAL
         {
             try
             {
-                List<Rute> ruteList = await _transportDB.Rute.ToListAsync();
+                List<Rute> ruteList = await _transportDB.Ruter.ToListAsync();
                 return ruteList;
             }
             catch (Exception e)
