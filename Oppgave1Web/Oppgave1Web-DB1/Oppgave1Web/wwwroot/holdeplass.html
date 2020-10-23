@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <input type="text" name="navn" id="txtNavn">
+    <button onclick="lagre()">Lagre</button>
+
+</body>
+<script>
+
+
+    function lagre() {
+
+        var holdeplassNavn = document.getElementById("txtNavn").value;
+
+        const Holdeplass = {
+            navn: holdeplassNavn
+        }
+
+        $.get("transport/nyHoldeplass", Holdeplass, function (godkjent) {
+
+            if (godkjent == true) {
+                document.body.innerHTML = "Holdeplass lagt til";
+            } else {
+                document.body.innerHTML = document.body.innerHTML + "Holdeplass kunne ikke oprettes til";
+            }
+
+
+        });
+
+    }
+
+
+</script>
+</html>
