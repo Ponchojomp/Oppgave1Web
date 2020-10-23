@@ -311,3 +311,8 @@ Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such tab
 2020-10-23T12:25:59.8714633+02:00 80000006-0006-fd00-b63f-84710c7967bb [INF] Hei (d3153e30)
 =======
 >>>>>>> parent of b081464... litt ruter
+2020-10-23T12:30:26.2943198+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-10-23T12:30:26.3157616+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2020-10-23T12:30:26.3182392+02:00  [INF] Content root path: "C:\Users\krist\Documents\GitHub\Oppgave1Web\Oppgave1Web\Oppgave1Web-DB1\Oppgave1Web" (b5d60022)
+2020-10-23T12:30:29.9679212+02:00 80000015-0009-ff00-b63f-84710c7967bb [INF] Halla (cff296f1)
+2020-10-23T12:30:36.4615543+02:00 80000006-0007-fd00-b63f-84710c7967bb [INF] Halla (cff296f1)
