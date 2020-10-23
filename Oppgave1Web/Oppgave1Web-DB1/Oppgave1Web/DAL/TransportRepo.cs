@@ -83,6 +83,7 @@ namespace Oppgave1Web.DAL
         public async Task<List<Rute>> HentAlleRuter()
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             try
             {
                 List<Rute> ruteList = await _transportDB.Rute.ToListAsync();
@@ -93,6 +94,11 @@ namespace Oppgave1Web.DAL
                 _log.LogInformation(e.Message);
                 return null;
             }
+=======
+            throw new NotImplementedException();
+
+            //OBSOBSBOOSBO MÅ IMPLEMENTERES
+>>>>>>> parent of b081464... litt ruter
 =======
             throw new NotImplementedException();
 

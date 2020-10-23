@@ -27,27 +27,17 @@ namespace Oppgave1Web.Model
         public int startholdeplass { get; set; }
         public int sluttholdeplass { get; set; }
     }
-
-    public class Brukere
-    {
-        public int Id { get; set; }
-        public string Brukernavn { get; set; }
-        public byte[] Passord { get; set; }
-        public byte[] Salt { get; set; }
-    }
-
+   
     public class TransportDB :DbContext
     {
         public TransportDB (DbContextOptions<TransportDB> options) : base(options)
         {
             Database.EnsureCreated();
-
         }
         public DbSet<Rute> Rute { get; set; }
         public DbSet<Holdeplass> Holdeplass { get; set; }
         public DbSet<Avganger> Avganger { get; set; }
         public DbSet<Bestilling> Bestillinger { get; set; }
-        public DbSet<Brukere> Brukere { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
