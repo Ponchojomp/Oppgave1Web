@@ -68,7 +68,20 @@
         $("#holdeplassene").html(ut);
     }
 
-    function slettHoldeplass(id) {
+function slettHoldeplass(id) {
+
+           console.log("sleeet");
+
+    $.get("transport/slettHoldeplass", id, function (godkjent) {
+
+        if (godkjent == true) {
+            hentAlleHoldeplasser();
+        } else {
+            console.log("kunne ikke slette");
+        }
+
+    })
+
 
     }
 
@@ -100,6 +113,16 @@
     }
 
     function slettBestilling() {
+
+        $.get("transport/slettBestilling", id, function (godkjent) {
+
+            if (godkjent == true) {
+                hentAlleHoldeplasser();
+            } else {
+                console.log("kunne ikke slette");
+            }
+
+        })
 
     }
 
