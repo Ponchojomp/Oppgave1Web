@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Oppgave1Web.DAL;
+using Microsoft.AspNetCore.Http;
+using KundeApp2.Model;
 
 namespace Oppgave1Web.Controllers
 {
@@ -17,6 +19,7 @@ namespace Oppgave1Web.Controllers
        
         private readonly ITransportRepo _transportDB;
         private readonly ILogger<TransportController> _log;
+        private const string _loggetInn = "loggetInn";
 
         public TransportController(ITransportRepo transportDB, ILogger<TransportController> log)
         {
@@ -60,6 +63,29 @@ namespace Oppgave1Web.Controllers
         {
             List<Avgang> avgangList = await _transportDB.HentAlleAvganger();
             return reise.besteAvgang(avgangList);
+        }
+
+        public async Task<ActionResult> LoggInn(Bruker bruker)
+        {
+            if (ModelState.IsValid)
+            {
+                bool returnOK = await _transportDB.LoggInn(bruker);
+                if (!returnOK)
+                {
+                    _log.LogInformation("Innloggingen feilet for bruker" + bruker.Brukernavn);
+                    HttpContext.Session.SetString(_loggetInn, "");
+                    return Ok(false);
+                }
+                HttpContext.Session.SetString(_loggetInn, "LoggetInn");
+                return Ok(true);
+            }
+            _log.LogInformation("Feil i inputvalidering");
+            return BadRequest("Feil i inputvalidering på server");
+        }
+
+        public void LoggUt()
+        {
+            HttpContext.Session.SetString(_loggetInn, "");
         }
     }
 }
