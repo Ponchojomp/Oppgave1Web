@@ -45,7 +45,7 @@ namespace Oppgave1Web.Model
 
         }
         //Endre til Ruter får hentalle til å funke
-        public DbSet<Rute> Rute { get; set; }
+        public DbSet<Rute> Ruter { get; set; }
         public DbSet<Holdeplass> Holdeplass { get; set; }
         public DbSet<Avganger> Avganger { get; set; }
         public DbSet<Bestilling> Bestillinger { get; set; }

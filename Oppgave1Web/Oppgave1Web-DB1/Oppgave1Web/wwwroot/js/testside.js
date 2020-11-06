@@ -70,9 +70,10 @@
 
 function slettHoldeplass(id) {
 
-           console.log("sleeet");
+           console.log(id);
+    const url = "transport/slettholdeplass?id=" + id;
 
-    $.get("transport/slettHoldeplass", id, function (godkjent) {
+    $.get(url, function (godkjent) {
 
         if (godkjent == true) {
             hentAlleHoldeplasser();
@@ -83,7 +84,13 @@ function slettHoldeplass(id) {
     })
 
 
-    }
+}
+
+function endreHoldeplass(id) {
+
+    window.location.href = "endreHoldeplass.html?id=" + id;
+
+}
 
     function hentAlleBestillinger() {
         $.get("transport/hentAlleBestillinger", function (bestillinger) {

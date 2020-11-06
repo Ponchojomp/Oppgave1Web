@@ -26,7 +26,48 @@ namespace Oppgave1Web.Controllers
             _transportDB = transportDB;
             _log = log;
         }
-        
+
+
+        public async Task<ActionResult> nyHoldeplass(Holdeplass holdeplass)
+        {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
+            if (ModelState.IsValid)
+            {
+                bool returOK = await _transportDB.LagreHoldeplass(holdeplass);
+                if (!returOK)
+                {
+                    _log.LogInformation("Holdeplassen kunne ikke lagres!");
+                    return BadRequest("Holdeplassen kunne ikke lagres");
+                }
+                return Ok("Holdeplass lagret");
+            }
+            _log.LogInformation("Feil i inputvalidering");
+            return BadRequest("Feil i inputvalidering på server");
+        }
+        public async Task<ActionResult> GetHoldeplass(Holdeplass holdeplass)
+        {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
+            if (ModelState.IsValid)
+            {
+                bool returOK = await _transportDB.EndreHoldeplass(holdeplass);
+                if (!returOK)
+                {
+                    _log.LogInformation("Endringen kunne ikke utføres");
+                    return NotFound("Endringen kunne ikke utføres");
+                }
+                return Ok("endret");
+            }
+            _log.LogInformation("Feil i inputvalidering");
+            return BadRequest("Feil i inputvalidering på server");
+        }
+
+
         public async Task<ActionResult<Holdeplass>> HentAlleHoldeplasser()
         {
 
@@ -83,6 +124,28 @@ namespace Oppgave1Web.Controllers
                 return NotFound("Kunne ikke slette holdeplass");
             }
             return Ok("Holdeplass slettet");
+        }
+
+        public async Task<ActionResult> SlettBestilling(int id)
+        {
+            bool returOK = await _transportDB.SlettBestilling(id);
+            if (!returOK)
+            {
+                _log.LogInformation("Kunne ikke slette bestilling");
+                return NotFound("Kunne ikke slette bestilling");
+            }
+            return Ok("Bestilling slettet");
+        }
+
+        public async Task<ActionResult> SlettRute(int id)
+        {
+            bool returOK = await _transportDB.SlettRute(id);
+            if (!returOK)
+            {
+                _log.LogInformation("Kunne ikke slette rute");
+                return NotFound("Kunne ikke slette rute");
+            }
+            return Ok("Rute slettet");
         }
 
         public async Task<ActionResult> LoggInn(Bruker bruker)

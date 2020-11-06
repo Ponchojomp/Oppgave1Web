@@ -20,19 +20,19 @@ namespace Oppgave1Web.DAL
 
 
         Task<List<Avgang>> HentAlleAvganger();
-        Task<bool> LagreAvgang(Avgang innAvgang);
+        Task<bool> LagreAvgang(Avganger innAvgang);
         Task<bool> EndreAvgang(Avgang innAvgang);
-        Task<bool> SlettAvgang(Avgang innAvgang);
+        Task<bool> SlettAvgang(int id);
 
         Task<List<Bestilling>> HentAlleBestillinger();
         Task<bool> LagreBestilling(Bestilling innBestilling);
         Task<bool> EndreBestilling(Bestilling innBestilling);
-        Task<bool> SlettBestilling(Bestilling innBestilling);
+        Task<bool> SlettBestilling(int id);
 
         Task<List<Rute>> HentAlleRuter();
         Task<bool> LagreRute(Rute innRute);
         Task<bool> EndreRute(Rute innRute);
-        Task<bool> SlettRute(Rute innRute);
+        Task<bool> SlettRute(int id);
 
         Task<Avgang> HentReise(Reise reise);
 
